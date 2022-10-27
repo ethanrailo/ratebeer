@@ -3,15 +3,15 @@
     <strong>Name:</strong>
     <%= beer.name %>
   </p>
-
   <p>
     <strong>Style:</strong>
     <%= beer.style %>
   </p>
-
   <p>
     <strong>Brewery:</strong>
-    <%= beer.brewery_id %>
+    <%=
+    b =  Brewery.find(beer.brewery_id)
+    link_to "#{b.name}", b
+    %>
   </p>
-
 </div>
