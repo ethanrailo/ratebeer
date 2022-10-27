@@ -1,7 +1,7 @@
 <div id="<%= dom_id beer %>">
   <p>
     <strong>Name:</strong>
-    <%= beer.name %>
+    <%= link_to beer.name, beer %>
   </p>
   <p>
     <strong>Style:</strong>
@@ -9,9 +9,6 @@
   </p>
   <p>
     <strong>Brewery:</strong>
-    <%=
-    b =  Brewery.find(beer.brewery_id)
-    link_to "#{b.name}", b
-    %>
+    <%= link_to beer.brewery.name, beer.brewery %>
   </p>
 </div>
