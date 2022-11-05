@@ -3,6 +3,6 @@
 <p>Number of ratings: <%= @ratings.count %></p>
 <div id="ratings">
   <% @ratings.each do |rating| %>
-    <li> <%= rating %> </li>
+    <%= render rating %>
   <% end %>
 </div>
