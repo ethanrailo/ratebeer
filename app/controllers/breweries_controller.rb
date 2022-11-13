@@ -1,5 +1,5 @@
 class BreweriesController < ApplicationController
-  before_action :set_brewery, only: %i[ show edit update destroy ]
+  before_action :set_brewery, only: %i[show edit update destroy]
   before_action :authenticate, only: [:destroy]
 
   # GET /breweries or /breweries.json
@@ -73,9 +73,10 @@ class BreweriesController < ApplicationController
   def authenticate
     admin_accounts = { "pekka" => "beer", "arto" => "foobar", "matti" => "ittam", "vilma" => "kangas" }
     authenticate_or_request_with_http_basic do |username, password|
-      if admin_accounts.key?(username) and password == admin_accounts.fetch(username)
+      if admin_accounts.key?(username) && password == admin_accounts.fetch(username)
         return true
       end
+
       raise "Wrong username or password"
     end
   end
