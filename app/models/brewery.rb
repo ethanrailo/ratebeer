@@ -3,7 +3,8 @@ class Brewery < ApplicationRecord
   has_many :beers, dependent: :destroy
   has_many :ratings, through: :beers
   validates :name, presence: true
-  validates :year, numericality: { only_integer: true }, comparison: { greater_than_or_equal_to: 1040, less_than_or_equal_to: 2022 }
+  validates :year, numericality: { only_integer: true }, comparison: { greater_than_or_equal_to: 1040 }
+  validate :founding_year_cannot_be_in_the_future
 
   def print_report
     puts name
@@ -14,5 +15,11 @@ class Brewery < ApplicationRecord
   def restart
     self.year = 2022
     puts "changed year to #{year}"
+  end
+
+  def founding_year_cannot_be_in_the_future
+    return unless year.present? && year > Time.now.year
+
+    errors.add(:year, "can't be in the future")
   end
 end
