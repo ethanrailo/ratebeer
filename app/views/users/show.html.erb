@@ -2,7 +2,7 @@
 
 <h3> Username: </h3>
 <p><%= @user %></p>
-
+<h4>Ratings</h4>
 <% if @user.ratings.empty? %>
   <p>user has not yet rated any beers!</p>
 <% else %>
@@ -19,7 +19,16 @@
   <% end %>
   </ul>
 <% end %>
-
+<h4>Beerclubs</h4>
+<% if @user.beer_clubs.empty? %>
+  <p>user has not yet joined any beerclubs!
+<% else %>
+  <ul>
+  <% @user.beer_clubs.each do |beerclub| %>
+      <li><%= link_to beerclub, beerclub %></li>
+  <% end %>
+  </ul>
+<% end %>
 <div>
   <%= link_to "Edit this user", edit_user_path(@user) %> |
   <%= link_to "Back to users", users_path %>
