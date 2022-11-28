@@ -6,5 +6,5 @@
     <li><%= render rating %> <%= link_to rating.user, rating.user %></li>
   <% end %>
 </div>
-<p><%= link_to "New rating", new_rating_path %></p>
+<p><%= link_to("New rating", new_rating_path) if current_user %></p>
 

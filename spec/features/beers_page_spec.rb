@@ -3,6 +3,11 @@ require "rails_helper"
 include Helpers
 
 describe "Beer" do
+  before :each do
+    @user = FactoryBot.create :user
+    sign_in(username: "Pekka", password: "Foobar1")
+  end
+
   it "is created when the name is valid" do
     FactoryBot.create :brewery
     visit new_beer_path
