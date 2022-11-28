@@ -12,4 +12,24 @@ class User < ApplicationRecord
   def to_s
     username
   end
+
+  def favorite_beer
+    return nil if ratings.empty?
+
+    ratings.order(score: :desc).limit(1).first.beer
+  end
+
+  def favorite_style
+    return nil if ratings.empty?
+
+    ratings_by_style = ratings.group_by { |r| r.beer.style }
+    ratings_by_style.map { |style, ratings| [style, ratings.inject(0.0) { |sum, rating| sum + rating.score } / ratings.count] }.sort_by { |_style, average| average }.reverse[0][0]
+  end
+
+  def favorite_brewery
+    return nil if ratings.empty?
+
+    ratings_by_brewery = ratings.group_by { |r| r.beer.brewery }
+    ratings_by_brewery.map { |brewery, ratings| [brewery, ratings.inject(0.0) { |sum, rating| sum + rating.score } / ratings.count] }.sort_by { |_brewery, average| average }.reverse[0][0]
+  end
 end

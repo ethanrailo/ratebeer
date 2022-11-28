@@ -2,11 +2,13 @@
 
 <h3> Username: </h3>
 <p><%= @user %></p>
-<h4>Ratings</h4>
+<h4>Ratings & favorites</h4>
 <% if @user.ratings.empty? %>
   <p>user has not yet rated any beers!</p>
 <% else %>
   <p><%= "Has made #{pluralize(@user.ratings.count, "rating")}, average rating #{@user.average_rating}" %></p>
+  <p><%= "Favorite style is #{@user.favorite_style}" %></p>
+  <p><%= "Favorite brewery is #{@user.favorite_brewery.name}" %></p>
   <ul>
   <% @user.ratings.each do |rating| %>
     <li>
