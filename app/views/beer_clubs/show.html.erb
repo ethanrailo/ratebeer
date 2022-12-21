@@ -7,9 +7,25 @@
     <li><%= link_to member.username, member %></li>
 <% end %>
 
-<div>
-  <%= link_to("Edit this beer club", edit_beer_club_path(@beer_club)) if current_user %> |
-  <%= link_to "Back to beer clubs", beer_clubs_path %>
+<% if current_user %>
+  <% if @beer_club.members.include? current_user %>
+    <p>You are a member of this beer club</p>
+  <% else %>
+    <div>
+      <%= form_with(model: @membership) do |form| %>
+        <%= form.hidden_field :beer_club_id, value: @beer_club.id %>
+        <%= form.hidden_field :user_id, value: current_user.id %>
+        <%= form.submit "Join the beer club" %>
+      <% end %>
+    </div>
+  <% end %>
 
-  <%= button_to("Destroy this beer club", @beer_club, method: :delete) if current_user %>
+  <%= link_to("Edit this beer club", edit_beer_club_path(@beer_club)) %>
+  <%= button_to("Destroy this beer club", @beer_club, method: :delete) %>
+<% end %>
+
+
+
+<div>
+  <%= link_to "Back to beer clubs", beer_clubs_path %>
 </div>
