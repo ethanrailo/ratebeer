@@ -13,4 +13,5 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: superfly/flyctl-actions/setup-flyctl@master
-      - run: flyctl deploy --build-secret BEERMAPPING_APIKEY=$BEERMAPPING_APIKEY --remote-only
+      - run: flyctl deploy --build-secret --remote-only
+      - run: flyctl secrets set BEERMAPPING_APIKEY=$BEERMAPPING_APIKEY
