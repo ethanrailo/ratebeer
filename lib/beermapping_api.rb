@@ -10,7 +10,7 @@ class BeermappingApi
     response = HTTParty.get "#{url}#{ERB::Util.url_encode(city)}"
     places = response.parsed_response["bmp_locations"]["location"]
 
-    return [] if places.is_a?(Hash) and places["id"].nil?
+    return [] if places.is_a?(Hash) && places["id"].nil?
 
     places = [places] if places.is_a?(Hash)
     places.map do |place|
@@ -18,7 +18,26 @@ class BeermappingApi
     end
   end
 
+  def self.place_details(place_id)
+    place = "place_#{place_id}"
+    Rails.cache.fetch(place, expires_in: 1.day) { get_place_details(place_id) }
+  end
+
+  def self.get_place_details(place_id)
+    url = "http://beermapping.com/webservice/locquery/#{key}/"
+    response = HTTParty.get "#{url}#{place_id}"
+
+    place = response.parsed_response["bmp_locations"]["location"]
+
+    return [] if place.is_a?(Hash) && place["id"].nil?
+
+    Place.new(place)
+  end
+
   def self.key
-    "31edb392bce8a9bb63f251d42d1d1da8"
+    return nil if Rails.env.test? # testatessa ei apia tarvita, palautetaan nil
+    raise "BEERMAPPING_APIKEY env variable not defined" if ENV["BEERMAPPING_APIKEY"].nil?
+
+    ENV.fetch("BEERMAPPING_APIKEY")
   end
 end
