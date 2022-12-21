@@ -11,8 +11,12 @@
 
   <p>
     <strong>Beers:</strong>
-    <% style.beers.each do |beer| %>
-      <%= link_to "#{beer.name}", beer %>
+    <% if style.beers.empty? %>
+      no beers of this style yet
+    <% else %>
+      <% style.beers.each do |beer| %>
+        <%= link_to "#{beer.name}", beer %>
+      <% end %>
     <% end %>
   </p>
 
