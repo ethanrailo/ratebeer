@@ -59,7 +59,7 @@ describe "User" do
 
     it "when given ratings, favorite style is shown in the user-specific page" do
       visit user_path(@user)
-      expect(page).to have_content "Favorite style is Lager"
+      expect(page).to have_content "Favorite style is lager"
     end
 
     it "when given ratings, favorite brewery is shown in the user-specific page" do

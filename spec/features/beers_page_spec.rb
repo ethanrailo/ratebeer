@@ -10,9 +10,10 @@ describe "Beer" do
 
   it "is created when the name is valid" do
     FactoryBot.create :brewery
+    FactoryBot.create :style
     visit new_beer_path
     fill_in("beer[name]", with: "Kalex")
-    select("Lager", from: "beer[style]")
+    select("lager", from: "beer_style_id")
     select("anonymous", from: "beer_brewery_id")
     expect {
       click_button "Create Beer"
@@ -21,8 +22,9 @@ describe "Beer" do
 
   it "is not created when the name is missing" do
     FactoryBot.create :brewery
+    FactoryBot.create :style
     visit new_beer_path
-    select("Lager", from: "beer[style]")
+    select("lager", from: "beer_style_id")
     select("anonymous", from: "beer_brewery_id")
     click_button "Create Beer"
 
