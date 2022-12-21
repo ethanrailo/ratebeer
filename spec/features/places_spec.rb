@@ -5,6 +5,9 @@ describe "Places" do
     allow(BeermappingApi).to receive(:places_in).with("kumpula").and_return(
       [Place.new(name: "Oljenkorsi", id: 1)]
     )
+    allow(WeatherstackApi).to receive(:weather_in).with("kumpula").and_return(
+      false
+    )
 
     visit places_path
     fill_in("city", with: "kumpula")
@@ -16,6 +19,9 @@ describe "Places" do
   it "if multiple are returned by the API, all are shown at the page" do
     allow(BeermappingApi).to receive(:places_in).with("riihimäki").and_return(
       [Place.new(name: "Hopeaharakka", id: 1), Place.new(name: "Tanssi- ja painiravintola Rity", id: 2), Place.new(name: "Yläpelti", id: 3)]
+    )
+    allow(WeatherstackApi).to receive(:weather_in).with("riihimäki").and_return(
+      false
     )
 
     visit places_path
@@ -30,6 +36,9 @@ describe "Places" do
   it "if none is returned by the API, helper text is shown at the page" do
     allow(BeermappingApi).to receive(:places_in).with("korso").and_return(
       []
+    )
+    allow(WeatherstackApi).to receive(:weather_in).with("korso").and_return(
+      false
     )
 
     visit places_path
