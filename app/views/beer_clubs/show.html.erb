@@ -9,7 +9,9 @@
 
 <% if current_user %>
   <% if @beer_club.members.include? current_user %>
-    <p>You are a member of this beer club</p>
+    <div>
+      <%= button_to "End the membership", Membership.find_by(user_id: current_user.id, beer_club_id: @beer_club.id), method: :delete %>
+    </div>
   <% else %>
     <div>
       <%= form_with(model: @membership) do |form| %>
