@@ -32,4 +32,9 @@ class User < ApplicationRecord
     ratings_by_brewery = ratings.group_by { |r| r.beer.brewery }
     ratings_by_brewery.map { |brewery, ratings| [brewery, ratings.inject(0.0) { |sum, rating| sum + rating.score } / ratings.count] }.sort_by { |_brewery, average| average }.reverse[0][0]
   end
+
+  def self.top_raters(count)
+    sorted_by_given_ratings_count = User.all.sort_by { |u| -u.ratings.count }
+    sorted_by_given_ratings_count[0..(count - 1)]
+  end
 end

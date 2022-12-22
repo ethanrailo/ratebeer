@@ -5,6 +5,8 @@ class Brewery < ApplicationRecord
   validates :name, presence: true
   validates :year, numericality: { only_integer: true }, comparison: { greater_than_or_equal_to: 1040 }
   validate :founding_year_cannot_be_in_the_future
+  scope :active, -> { where active: true }
+  scope :retired, -> { where active: [nil, false] }
 
   def print_report
     puts name
@@ -21,5 +23,10 @@ class Brewery < ApplicationRecord
     return unless year.present? && year > Time.now.year
 
     errors.add(:year, "can't be in the future")
+  end
+
+  def self.top(count)
+    sorted_by_rating_in_desc_order = Brewery.all.sort_by { |b| -b.average_rating }
+    sorted_by_rating_in_desc_order[0..(count - 1)]
   end
 end

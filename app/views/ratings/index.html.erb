@@ -1,9 +1,87 @@
-<h1>List of ratings</h1>
-<p>Number of ratings: <%= @ratings.count %></p>
+<h1>Ratings</h1>
 <div id="ratings">
-  <% @ratings.each do |rating| %>
-    <li><%= render rating %> <%= link_to rating.user, rating.user %></li>
-  <% end %>
+  <div class="row">
+    <div class="col-sm-6">
+      <h3>Best beers</h3>
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>Beer</th>
+              <th>Average</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @best_rated_beers.each do |beer| %>
+            <tr>
+              <th><%= link_to beer.name, beer %></th>
+              <th><%= beer.average_rating %></th>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+    </div>
+    <div class="col-sm-6">
+      <h3>Best breweries</h3>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Brewery</th>
+            <th>Average</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @best_rated_breweries.each do |brewery| %>
+          <tr>
+            <th><%= link_to brewery.name, brewery %></th>
+            <th><%= brewery.average_rating %></th>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-6">
+      <h3>Best styles</h3>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Style</th>
+            <th>Average</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @best_rated_styles.each do |style| %>
+          <tr>
+            <th><%= link_to style.name, style %></th>
+            <th><%= style.average_rating %></th>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-sm-6">
+      <h3>Most active users</h3>
+      <ol type="1">
+          <% @most_active_users.each do |user| %>
+            <li><%= link_to user.username, user %>, <%= user.ratings.count %> ratings</li>
+          <% end %>
+      </ol>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-12">
+      <h3>Recent ratings</h3>
+      <ul>
+      <% @recent_ratings.each do |rating| %>
+        <li><%= "#{rating.beer.name} #{rating.score} #{rating.created_at}" %></li>
+      <% end %>
+      </ul>
+    </div>
+  </div>
+
 </div>
 <p><%= link_to("New rating", new_rating_path) if current_user %></p>
 

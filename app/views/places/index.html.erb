@@ -15,10 +15,13 @@
 <% if @places %>
   <table class="table table-hover">
     <thead>
+      <tr>
       <% Place.rendered_fields.each do |field| %>
         <th><%= field %></th>
       <% end %>
+      </tr>
     </thead>
+    <tbody>
     <% @places.each do |place| %>
       <tr>
         <% Place.rendered_fields.each do |field| %>
@@ -30,5 +33,6 @@
         <% end %>
       </tr>
     <% end %>
+    </tbody>
   </table>
 <% end %>

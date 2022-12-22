@@ -4,6 +4,7 @@ module RatingAverage
   def average_rating
     return 0 if ratings.empty?
 
-    ratings.inject(0.0) { |sum, rating| sum + rating.score } / ratings.size
+    average = ratings.inject(0.0) { |sum, rating| sum + rating.score } / ratings.size
+    average.round(2)
   end
 end
