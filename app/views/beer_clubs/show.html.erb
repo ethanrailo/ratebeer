@@ -8,20 +8,20 @@
 <% if current_user %>
   <% if @beer_club.members.include? current_user %>
     <div>
-      <%= button_to "End the membership", Membership.find_by(user_id: current_user.id, beer_club_id: @beer_club.id), method: :delete %>
+      <%= button_to "End the membership", Membership.find_by(user_id: current_user.id, beer_club_id: @beer_club.id), method: :delete, class: "btn btn-danger" %>
     </div>
   <% else %>
     <div>
       <%= form_with(model: @membership) do |form| %>
         <%= form.hidden_field :beer_club_id, value: @beer_club.id %>
         <%= form.hidden_field :user_id, value: current_user.id %>
-        <%= form.submit "Join the beer club" %>
+        <%= form.submit "Join the beer club", class: "btn btn-primary" %>
       <% end %>
     </div>
   <% end %>
 
   <%= link_to("Edit this beer club", edit_beer_club_path(@beer_club)) %>
-  <%= button_to("Destroy this beer club", @beer_club, method: :delete) %>
+  <%= button_to("Destroy this beer club", @beer_club, method: :delete, class: "btn btn-danger") %>
 <% end %>
 
 
