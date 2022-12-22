@@ -1,4 +1,6 @@
 class RatingsController < ApplicationController
+  before_action :ensure_that_signed_in, except: [:index, :show]
+
   def index
     @best_rated_beers = Beer.top 5
     @best_rated_breweries = Brewery.top 5

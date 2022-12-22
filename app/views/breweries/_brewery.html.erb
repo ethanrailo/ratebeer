@@ -15,4 +15,5 @@
   <% else %>
     <p><%= "Brewery has #{pluralize(brewery.ratings.count, "rating")} with an average of #{round(brewery.average_rating)}" %></p>
   <% end %>
+    <p><%= link_to "Show brewery", brewery %></p>
 </div>
