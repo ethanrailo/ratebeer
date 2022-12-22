@@ -1,5 +1,9 @@
 <h3> Username: </h3>
 <p><%= @user %></p>
+<% if @user.disabled %>
+  <span class="badge bg-secondary">disabled</span>
+<% end %>
+<%= link_to "Change account status", toggle_account_status_user_path(@user.id), data: { turbo_method: "post" }, class: "btn btn-danger" if current_user.admin? %>
 <h4>Ratings & favorites</h4>
 <% if @user.ratings.empty? %>
   <p>user has not yet rated any beers!</p>

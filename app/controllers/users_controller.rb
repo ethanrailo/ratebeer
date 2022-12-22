@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: %i[show edit update destroy]
+  before_action :set_user, only: %i[show edit update destroy toggle_account_status]
+  before_action :ensure_that_user_is_admin, only: %i[toggle_account_status]
 
   # GET /users or /users.json
   def index
@@ -17,6 +18,12 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
+  end
+
+  def toggle_account_status
+    @user.update_attribute :disabled, !@user.disabled
+    new_status = @user.disabled? ? "disabled" : "active"
+    redirect_to @user, notice: "user status changed to #{new_status}"
   end
 
   # POST /users or /users.json

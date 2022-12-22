@@ -2,6 +2,9 @@
   <p>
     <strong>Username:</strong>
     <%= user.username %>
+    <% if user.disabled %>
+      <span class="badge bg-secondary">disabled</span>
+    <% end %>
   </p>
 
 </div>
