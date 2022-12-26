@@ -29,7 +29,9 @@ describe "Rating" do
   it "is shown correctly on the list of ratings -page" do
     create_beers_with_many_ratings({ user: user }, 10, 20, 15, 7, 9)
     visit ratings_path
-    expect(page).to have_content "Number of ratings: 5"
-    expect(page).to have_content "anonymous 10 Pekka"
+    expect(page).to have_content "Recent ratings"
+    expect(page).to have_content "anonymous 10"
+    expect(page).to have_content "Most active users"
+    expect(page).to have_content "Pekka, 5 ratings"
   end
 end

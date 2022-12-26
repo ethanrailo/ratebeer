@@ -4,6 +4,9 @@
       "/home/henkka/repos/ratebeer/app/helpers/application_helper.rb": {
         "lines": [
           1,
+          1,
+          23,
+          null,
           null
         ]
       },
@@ -56,6 +59,11 @@
           1,
           2,
           null,
+          null,
+          1,
+          8,
+          1,
+          null,
           null
         ]
       },
@@ -72,9 +80,9 @@
           1,
           null,
           1,
-          10,
+          45,
           null,
-          42,
+          102,
           null,
           null
         ]
@@ -93,7 +101,7 @@
           1,
           null,
           1,
-          18,
+          13,
           null,
           null,
           1,
@@ -115,6 +123,11 @@
           44,
           110,
           null,
+          null,
+          1,
+          2,
+          1,
+          null,
           null
         ]
       },
@@ -128,6 +141,9 @@
           1,
           7,
           null,
+          null,
+          7,
+          0,
           7,
           6,
           6,
@@ -152,19 +168,24 @@
           1,
           null,
           1,
-          136,
+          165,
           null,
-          88,
+          109,
           null,
           null,
           1,
-          4,
+          7,
+          null,
+          null,
+          1,
+          0,
           null,
           null
         ]
       },
       "/home/henkka/repos/ratebeer/app/controllers/users_controller.rb": {
         "lines": [
+          1,
           1,
           1,
           null,
@@ -184,6 +205,12 @@
           null,
           null,
           1,
+          null,
+          null,
+          1,
+          0,
+          0,
+          0,
           null,
           null,
           null,
@@ -254,6 +281,7 @@
           1,
           null,
           null,
+          2,
           null,
           1,
           30,
@@ -309,6 +337,11 @@
           null,
           0,
           null,
+          null,
+          1,
+          7,
+          1,
+          null,
           null
         ]
       },
@@ -316,15 +349,23 @@
         "lines": [
           1,
           1,
+          1,
+          1,
           null,
           1,
           7,
+          null,
+          null,
+          1,
+          8,
+          1,
           null,
           null
         ]
       },
       "/home/henkka/repos/ratebeer/app/controllers/beers_controller.rb": {
         "lines": [
+          1,
           1,
           1,
           1,
@@ -414,6 +455,7 @@
           1,
           1,
           1,
+          1,
           null,
           null,
           1,
@@ -434,6 +476,15 @@
           1,
           null,
           null,
+          1,
+          0,
+          0,
+          null,
+          0,
+          null,
+          0,
+          null,
+          null,
           null,
           1,
           0,
@@ -476,7 +527,7 @@
           null,
           null,
           1,
-          0,
+          1,
           null,
           null,
           null,
@@ -594,6 +645,12 @@
         "lines": [
           1,
           1,
+          null,
+          1,
+          1,
+          1,
+          1,
+          1,
           1,
           null,
           null,
@@ -644,6 +701,7 @@
       },
       "/home/henkka/repos/ratebeer/app/controllers/beer_clubs_controller.rb": {
         "lines": [
+          0,
           0,
           0,
           0,
@@ -725,6 +783,7 @@
         "lines": [
           0,
           0,
+          0,
           null,
           null,
           0,
@@ -798,6 +857,8 @@
       },
       "/home/henkka/repos/ratebeer/app/controllers/styles_controller.rb": {
         "lines": [
+          0,
+          0,
           0,
           0,
           null,
@@ -897,6 +958,6 @@
         }
       }
     },
-    "timestamp": 1671706776
+    "timestamp": 1672051661
   }
 }
