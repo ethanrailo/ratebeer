@@ -1,11 +1,23 @@
 <h1>Styles</h1>
 
 <div id="styles">
-  <ul>
+  <div class="accordion accordion-flush" id="accordionStyles">
     <% @styles.each do |style| %>
-      <li><%= link_to style.name, style %></li>
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="flush-heading<%= style.id %>">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse<%= style.id %>" aria-expanded="false" aria-controls="flush-collapse<%= style.id %>">
+              <%= style.name %>
+            </button>
+          </h2>
+          <div id="flush-collapse<%= style.id %>" class="accordion-collapse collapse" aria-labelledby="flush-heading<%= style.id %>" data-bs-parent="#accordionStyles">
+            <div class="accordion-body">
+              <p><%= style.description %></p>
+              <p><%= link_to style.name, style %></p>
+            </div>
+          </div>
+        </div>
     <% end %>
-  </ul>
+  </div>
 </div>
 
 <%= link_to "New style", new_style_path %>
