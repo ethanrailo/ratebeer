@@ -1,10 +1,11 @@
 class BreweriesController < ApplicationController
-  before_action :ensure_that_signed_in, except: [:index, :show]
+  before_action :ensure_that_signed_in, except: [:index, :show, :list]
   before_action :set_brewery, only: %i[show edit update destroy]
   before_action :ensure_that_user_is_admin, only: %i[destroy]
 
   # GET /breweries or /breweries.json
   def index
+    @breweries = Brewery.all
     @active_breweries = Brewery.active
     @retired_breweries = Brewery.retired
   end
@@ -67,6 +68,9 @@ class BreweriesController < ApplicationController
       format.html { redirect_to breweries_url, notice: "Brewery was successfully destroyed." }
       format.json { head :no_content }
     end
+  end
+
+  def list
   end
 
   private
